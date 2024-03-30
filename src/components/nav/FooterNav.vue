@@ -1,8 +1,8 @@
 <template>
   <div>
     <ul>
-      <li>개인정보 처리방침</li>
-      <li>이메일 무단수집거부</li>
+      <li><PrivacyPolicy/></li>
+      <li><EmailPolicy/></li>
     </ul>
     <ul>
       <li>상호 : 귤컴퍼니</li>
@@ -19,7 +19,14 @@
 </template>
 
 <script>
+import PrivacyPolicy from '../policy/PrivacyPolicy.vue'
+import EmailPolicy from '../policy/EmailPolicy.vue'
+
 export default {
+  components: {
+    PrivacyPolicy,
+    EmailPolicy,
+  },
 
 }
 </script>
