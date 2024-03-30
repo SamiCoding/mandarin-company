@@ -33,6 +33,9 @@ export default {
       this.sideSubMenuList = sideNav.sideSubMenuList
       this.menuQuery = this.$route.params.str
     }
+    else {
+      this.$router.push({name: '404Page'})
+    }
   },
 
   watch: {
