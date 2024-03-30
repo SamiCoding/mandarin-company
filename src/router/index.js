@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import SideNavLayout from '@/layouts/SideNavLayout.vue'
 
 const routes = [
   {
@@ -10,16 +11,25 @@ const routes = [
     path: '/about/:str',
     name: 'aboutPage',
     component: () => import('@/views/AboutPage.vue'),
+    meta: {
+      layout: SideNavLayout,
+    },
   },
   {
     path: '/service/:str',
     name: 'servicePage',
     component: () => import('@/views/ServicePage.vue'),
+    meta: {
+      layout: SideNavLayout,
+    },
   },
   {
     path: '/contact/:str',
     name: 'contactPage',
     component: () => import('@/views/ContactPage.vue'),
+    meta: {
+      layout: SideNavLayout,
+    },
   },
 ]
 
