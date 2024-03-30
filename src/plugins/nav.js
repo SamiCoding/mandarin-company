@@ -21,7 +21,19 @@ export default {
         ['문의·의뢰', 'inquiry'],
       ],
     ]
+    const sideNav = function() {
+      const menuKeyword = this.$route.fullPath.split('/')[1]
+      const menuQuery = this.$route.params.str
+      const menuIndex = navMenuList.findIndex(v => v[1] === menuKeyword)
+
+      return {
+        sideMenu: navMenuList[menuIndex],
+        sideSubMenuList: navSubMenuList[menuIndex],
+        correctPath: navSubMenuList[menuIndex].flat().includes(menuQuery), 
+      }
+    }
     app.config.globalProperties.$navMenuList = navMenuList
     app.config.globalProperties.$navSubMenuList = navSubMenuList
+    app.config.globalProperties.$sideNav = sideNav
   }
 }
