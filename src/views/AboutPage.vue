@@ -1,5 +1,9 @@
 <template>
   <div class="page">
+    <ProgressNav
+      :progressMenu="progressMenu"
+      :progressSubMenu="progressSubMenu"
+    />
     <div class="page-content">
       <AboutCeo v-if="menuQuery==='ceo'"/>
       <AboutVision v-else-if="menuQuery==='vision'"/>
@@ -11,6 +15,7 @@
 </template>
 
 <script>
+import ProgressNav from '@/components/nav/ProgressNav.vue'
 import AboutCeo from '@/components/page/about/AboutCeo.vue'
 import AboutVision from '@/components/page/about/AboutVision.vue'
 import AboutHistory from '@/components/page/about/AboutHistory.vue'
@@ -19,6 +24,7 @@ import AboutLocation from '@/components/page/about/AboutLocation.vue'
 
 export default {
   components: {
+    ProgressNav,
     AboutCeo,
     AboutVision,
     AboutHistory,
@@ -27,15 +33,23 @@ export default {
   },
   
   data: () => ({
+    progressMenu: '',
+    progressSubMenu: '',
     menuQuery: '',
   }),
 
   mounted() {
+    const progressNav = this.$progressNav()
+    this.progressMenu = progressNav.progressMenu
+    this.progressSubMenu = progressNav.progressSubMenu
     this.menuQuery = this.$route.params.str
   },
 
   watch: {
     $route() {
+      const progressNav = this.$progressNav()
+      this.progressMenu = progressNav.progressMenu
+      this.progressSubMenu = progressNav.progressSubMenu
       this.menuQuery = this.$route.params.str
     },
   },
