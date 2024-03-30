@@ -6,6 +6,12 @@
         <span>귤컴퍼니</span>
       </router-link>
     </div>
+    <input class="nav-icon" id="nav-icon__btn" type="checkbox">
+    <div class="nav-icon">
+      <label class="nav-icon__menu" for="nav-icon__btn"><v-icon icon="mdi-menu"/></label>
+      <label class="nav-icon__close" for="nav-icon__btn"><v-icon icon="mdi-close"/></label>
+      <label class="nav-icon__close" for="nav-icon__btn"><div class="nav-close"></div></label>
+    </div>
     <div class="nav-menu">
       <ul class="nav-menu__main">
         <li v-for="(navMenu, i) in navMenuList" :key="i">
@@ -90,6 +96,10 @@ export default {
     padding-left: 10px;
   }
 
+  .nav-icon {
+    display: none;
+  }
+
   .nav-menu {
     height: 100%;
   }
@@ -156,6 +166,164 @@ export default {
       visibility: visible;
       height: 170px;
       transition-duration: 0.5s;
+    }
+  }
+
+  /* mobile */
+  @media (max-width: 700px) {
+    .nav-icon {
+      display: block;
+      position: absolute;
+      right: 0;
+      padding: 0 20px;
+      z-index: 10;
+    }
+
+    #nav-icon__btn {
+      display: none;
+    }
+
+    .nav-icon__menu {
+      display: block;
+      cursor: pointer;
+    }
+
+    #nav-icon__btn:checked ~ .nav-icon > .nav-icon__menu {
+      display: none;
+    }
+
+    .nav-icon__close {
+      display: none;
+      cursor: pointer;
+    }
+
+    #nav-icon__btn:checked ~ .nav-icon > .nav-icon__close {
+      display: block;
+    }
+
+    .nav-close {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: calc(100% - 250px);
+      height: 100vh;
+      cursor: default;
+    }
+
+    .nav-menu {
+      visibility: hidden;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100vh;
+    }
+
+    #nav-icon__btn:checked ~ .nav-menu {
+      visibility: visible;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-menu__main {
+      overflow: scroll;
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100vh;
+      padding: 100px 30px 0 30px;
+      background-color: white;
+      box-sizing: border-box;
+    }
+
+    #nav-icon__btn:checked ~ .nav-menu > .nav-menu__main {
+      right: 0;
+    }
+
+    .nav-menu__main > li {
+      float: none;
+      height: auto;
+      text-align: right;
+    }
+
+    .nav-menu__main > li > span {
+      width: 100%;
+      height: auto;
+      padding: 10px 0 5px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+      text-align: left;
+    }
+
+    .nav-menu__main > li > span > a {
+      top: auto;
+      transform: none;
+    }
+
+    .nav-menu__sub {
+      visibility: hidden;
+      height: auto;
+      padding: 0;
+      background-color: transparent;
+    }
+
+    .nav-menu__main:hover .nav-menu__sub {
+      height: auto;
+      transition: none;
+    }
+
+    #nav-icon__btn:checked ~ .nav-menu > .nav-menu__main .nav-menu__sub {
+      visibility: visible;
+    }
+
+    .nav-menu__sub > li {
+      height: auto;
+    }
+
+    .nav-menu__sub > li > span {
+      display: inline-block;
+      width: 90%;
+      height: auto;
+      padding: 10px 0 5px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+      text-align: left;
+    }
+    
+    .nav-menu__sub > li > span > a {
+      top: auto;
+      transform: none;
+    }
+
+    @media (hover: hover) {
+      .nav-menu__main {
+        overflow: visible;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    .nav-logo {
+      width: 200px;
+    }
+
+    .nav-icon {
+      padding: 0 10px;
+    }
+
+    .nav-menu__main {
+      width: 200px;
+      padding: 100px 20px 0 20px;
+    }
+
+    .nav-close {
+      width: calc(100% - 200px);
+    }
+
+    .nav-menu__main > li > span {
+      padding: 8px 0 4px;
+    }
+
+    .nav-menu__sub > li > span {
+      padding: 8px 0 4px;
     }
   }
 </style>
