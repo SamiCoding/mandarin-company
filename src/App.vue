@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <v-main>
-      <router-view/>
+      <component id="content" :is="$route.meta.layout || 'div'">
+        <router-view/>
+      </component>
     </v-main>
   </v-app>
 </template>
