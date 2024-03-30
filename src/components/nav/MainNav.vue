@@ -21,6 +21,7 @@
                 name: `${navMenu[1]}Page`,
                 params: {str: `${navSubMenuList[i][0][1]}`},
               }"
+              @click="closeNav"
             >
               {{ navMenu[0] }}
             </router-link>
@@ -33,6 +34,7 @@
                     name: `${navMenu[1]}Page`,
                     params: {str: `${navSubMenu[1]}`},
                   }"
+                  @click="closeNav"
                 >
                   {{ navSubMenu[0] }}
                 </router-link>
@@ -77,6 +79,11 @@ export default {
       }
       else if (this.originWidth <= 700 && window.innerWidth > 700) {
         this.originWidth = window.innerWidth
+      }
+    },
+    closeNav() {
+      if (this.originWidth <= 700) {
+        document.getElementById('nav-icon__btn').checked = false
       }
     },
   },
