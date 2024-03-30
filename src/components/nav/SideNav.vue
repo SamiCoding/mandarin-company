@@ -24,6 +24,14 @@ export default {
       this.sideSubMenuList = sideNav.sideSubMenuList
     }
   },
+
+  watch: {
+    $route() {
+      const sideNav = this.$sideNav()
+      this.sideMenu = sideNav.sideMenu
+      this.sideSubMenuList = sideNav.sideSubMenuList
+    },
+  },
 }
 </script>
 
