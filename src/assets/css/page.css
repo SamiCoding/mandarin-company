@@ -1,0 +1,19 @@
+.page {
+  position: relative;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.page-content {
+  min-height: 150px;
+  margin: 5px 5px 5px 30px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* mobile */
+@media (max-width: 700px) {
+  .page-content {
+    margin: 5px 10px 5px 10px;
+  }
+}
