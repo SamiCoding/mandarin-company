@@ -1,0 +1,39 @@
+b {
+  cursor: pointer;
+}
+
+.policy {
+  padding: 20px;
+  font-family: 'NanumSquareBold';
+}
+
+.policy__action {
+  text-align: right;
+}
+
+.policy__title {
+  margin: 10px 0;
+  font-family: 'NanumSquareExtraBold';
+}
+
+.policy__content {
+  margin: 10px 0 20px;
+}
+
+.policy__content__box {
+  overflow: auto;
+  height: 300px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+/* mobile */
+@media (max-width: 500px) {
+  .policy {
+    padding: 10px;
+  }
+
+  .policy__content__box {
+    padding: 5px;
+  }
+}
