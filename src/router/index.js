@@ -31,6 +31,15 @@ const routes = [
       layout: SideNavLayout,
     },
   },
+  {
+    path: '/404',
+    name: '404Page',
+    component: () => import('@/views/NotFound.vue'),
+  },
+  {
+    path: '/:pathMatch(.*)',
+    redirect: '/404',
+  },
 ]
 
 const router = createRouter({
