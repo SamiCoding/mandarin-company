@@ -32,8 +32,19 @@ export default {
         correctPath: navSubMenuList[menuIndex].flat().includes(menuQuery), 
       }
     }
+    const progressNav = function() {
+      const menuKeyword = this.$route.fullPath.split('/')[1]
+      const menuQuery = this.$route.params.str
+      const menuIndex = navMenuList.findIndex(v => v[1] === menuKeyword)
+      const menuSubIndex = navSubMenuList[menuIndex].flat().findIndex(v => v === menuQuery) - 1
+      return {
+        progressMenu: navMenuList[menuIndex][0],
+        progressSubMenu: navSubMenuList[menuIndex].flat()[menuSubIndex],
+      }
+    }
     app.config.globalProperties.$navMenuList = navMenuList
     app.config.globalProperties.$navSubMenuList = navSubMenuList
     app.config.globalProperties.$sideNav = sideNav
+    app.config.globalProperties.$progressNav = progressNav
   }
 }
