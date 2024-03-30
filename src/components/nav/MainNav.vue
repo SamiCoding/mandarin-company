@@ -50,11 +50,35 @@ export default {
   data: () => ({
     navMenuList: [],
     navSubMenuList: [],
+    originWidth: 0,
   }),
 
   mounted() {
+    this.originWidth = window.innerWidth
+    window.addEventListener('resize', this.resizeWidth)
+
     this.navMenuList = this.$navMenuList
     this.navSubMenuList = this.$navSubMenuList
+  },
+
+  beforeUnmount() {
+    window.removeEventListener('resize', this.resizeWidth)
+  },
+
+  methods: {
+    resizeWidth() {
+      if (this.originWidth > 700 && window.innerWidth <= 700) {
+        const navMenu = document.querySelector('.nav-menu')
+        navMenu.style.display = 'none'
+        setTimeout(() => {
+          navMenu.style.display = 'block'
+        })
+        this.originWidth = window.innerWidth
+      }
+      else if (this.originWidth <= 700 && window.innerWidth > 700) {
+        this.originWidth = window.innerWidth
+      }
+    },
   },
 }
 </script>
@@ -171,6 +195,24 @@ export default {
 
   /* mobile */
   @media (max-width: 700px) {
+    @keyframes navOpen {
+      from {
+        transform: translateX(250px);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes navClose {
+      from {
+        transform: translateX(-250px);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+
     .nav-icon {
       display: block;
       position: absolute;
@@ -217,6 +259,7 @@ export default {
       right: 0;
       width: 100%;
       height: 100vh;
+      transition-duration: 0.5s;
     }
 
     #nav-icon__btn:checked ~ .nav-menu {
@@ -234,10 +277,12 @@ export default {
       padding: 100px 30px 0 30px;
       background-color: white;
       box-sizing: border-box;
+      animation: navClose 0.5s ease-in-out;
     }
 
     #nav-icon__btn:checked ~ .nav-menu > .nav-menu__main {
       right: 0;
+      animation: navOpen 0.5s ease-in-out;
     }
 
     .nav-menu__main > li {
