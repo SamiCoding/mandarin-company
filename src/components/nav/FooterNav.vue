@@ -46,4 +46,17 @@ export default {
     content: "|";
     padding: 10px;
   }
+
+  /* mobile */
+  @media (max-width: 700px) {
+    ul {
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    ul {
+      font-size: 12px;
+    }
+  }
 </style>

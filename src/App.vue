@@ -83,4 +83,45 @@ export default {
     background-color: rgba(0, 255, 0, 0.3);
     font-family: 'NanumSquare';
   }
+
+  @media (max-width: 1000px) {
+    #nav {
+      padding: 0 5vw;
+    }
+
+    #footer {
+      padding: 0 2vw;
+    }
+  }
+
+  /* mobile */
+  @media (max-width: 700px) {
+    #nav {
+      padding: 0 20px;
+    }
+
+    #content {
+      min-height: calc(100vh - 80px - 160px);
+    }
+
+    #footer {
+      height: 160px;
+      padding: 0 20px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    #nav {
+      padding: 0 10px;
+    }
+
+    #content {
+      min-height: calc(100vh - 80px - 200px);
+    }
+
+    #footer {
+      height: 200px;
+      padding: 0 10px;
+    }
+  }
 </style>
