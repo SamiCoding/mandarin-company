@@ -353,10 +353,6 @@ export default {
   }
 
   @media (max-width: 500px) {
-    .nav-logo {
-      width: 200px;
-    }
-
     .nav-icon {
       padding: 0 10px;
     }
